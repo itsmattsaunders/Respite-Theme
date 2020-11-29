@@ -1,0 +1,37 @@
+
+
+<div id="hero-img-picker">
+
+  <img src="{{ section.settings.hero-img-picker | img_url: 'master' }}" alt="Hero Image" id="hero-img-picker">
+
+
+  <div class="hero-text">
+    <h1>
+      {{ section.settings.header }}
+    </h1>
+  </div>
+</div>
+
+
+{% schema %} 
+{
+  "name": "Hero Image Picker",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "hero-img-picker",
+      "label": "Hero Image Picker"
+    }
+  ],
+  "name": "Hero Text",
+  "settings": [
+    {
+      "id": "header",
+      "type": "text",
+      "label": "Header",
+      "default": "Hello world"
+    }
+  ]
+}
+
+{% endschema %}

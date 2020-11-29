@@ -1,0 +1,47 @@
+<nav id="nav-bar" class="nav-bar" role="navigation">
+  <div id="menu-toggle">
+    <input type="checkbox" />
+    <span></span>
+    <span></span>
+    <span></span>
+    <ul id="menu">
+      {% for link in linklists.main-menu.links %} {% assign child_list_handle =
+      link.title | handleize %} {% if linklists[child_list_handle].links !=
+      blank %}
+      <h4>
+        <li>
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        </li>
+      </h4>
+      {% for childlink in linklists[child_list_handle].links %}
+      <h4>
+        <li>
+          <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+        </li>
+      </h4>
+      {% endfor %}] {% else %}
+      <h4>
+        <li>
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        </li>
+      </h4>
+      {% endif %} {% endfor %}
+    </ul>
+  </div>
+
+  <a href="/">
+    <h3 id="nav-title">
+      {{ shop.name }}
+    </h3>
+  </a>
+
+  <a id="cart" href="/cart"><i class="fas fa-shopping-cart"></i></a>
+
+  {% if shop.customer_accounts_enabled %} {% if customer %}
+  <a href="/account">account</a>
+  {{ "log out" | customer_logout_link }}
+  {% else %}
+  {{ "log in " | customer_login_link }}
+  {{ "register" | customer_register_link }}
+  {% endif %} {% endif %}
+</nav>
