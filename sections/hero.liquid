@@ -1,37 +1,43 @@
 
+{% for block in section.blocks %}
+    <div id="hero-img">
+        <img src="{{ block.settings.hero-img | img_url: 'master' }}" alt="Hero Image" id="hero-img-picker">
 
-<div id="hero-img-picker">
-
-  <img src="{{ section.settings.hero-img-picker | img_url: 'master' }}" alt="Hero Image" id="hero-img-picker">
-
-
-  <div class="hero-text">
-    <h1>
-      {{ section.settings.header }}
-    </h1>
-  </div>
-</div>
+        <h1 class="hero-text">
+          {{ block.settings.herotitle }}
+        </h1>
+    </div>
+  {% break %}
+{% endfor %}
 
 
 {% schema %} 
 {
-  "name": "Hero Image Picker",
-  "settings": [
+  "name": "Hero Image",
+  "max_blocks": 2,
+  "blocks": [
     {
+      "name": "Image picker",
       "type": "image_picker",
-      "id": "hero-img-picker",
-      "label": "Hero Image Picker"
-    }
-  ],
-  "name": "Hero Text",
-  "settings": [
+      "settings": [
+      {
+        "id": "hero-img",
+        "type": "image_picker",
+        "label": "Hero Image Picker"
+      } 
+     ]
+    },
     {
-      "id": "header",
+      "name": "Header Text",
       "type": "text",
-      "label": "Header",
-      "default": "Hello world"
+      "settings": [
+      {
+        "id": "herotitle",
+        "type": "text",
+        "label": "Hero Header"
+      }
+      ]
     }
   ]
 }
-
 {% endschema %}
