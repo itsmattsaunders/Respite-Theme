@@ -1,43 +1,22 @@
 
-{% for block in section.blocks %}
     <div id="hero-img">
-        <img src="{{ block.settings.hero-img | img_url: 'master' }}" alt="Hero Image" id="hero-img-picker">
+        <img src="{{ section.settings.hero-img | img_url: 'master' }}" alt="Hero Image" id="hero-img-picker">
 
-        <h1 class="hero-text">
-          {{ block.settings.herotitle }}
-        </h1>
     </div>
-  {% break %}
-{% endfor %}
 
 
-{% schema %} 
-{
-  "name": "Hero Image",
-  "max_blocks": 2,
-  "blocks": [
+
+
+
+{% schema %}
     {
-      "name": "Image picker",
-      "type": "image_picker",
+      "name": "Hero Image",
       "settings": [
-      {
-        "id": "hero-img",
-        "type": "image_picker",
-        "label": "Hero Image Picker"
-      } 
-     ]
-    },
-    {
-      "name": "Header Text",
-      "type": "text",
-      "settings": [
-      {
-        "id": "herotitle",
-        "type": "text",
-        "label": "Hero Header"
-      }
+        {
+          "id": "hero-img",
+          "type": "image_picker",
+          "label": "Hero Image Picker"
+        }
       ]
     }
-  ]
-}
 {% endschema %}
